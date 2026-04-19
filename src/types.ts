@@ -1,6 +1,11 @@
-import type { ComponentType, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-export type IconComponent = ComponentType<{ size?: number | string; className?: string }>
+// Intentionally loose: icon libraries (lucide-react, heroicons, etc.) return
+// ForwardRefExoticComponent, which doesn't unify cleanly with FunctionComponent
+// across React type versions. We only use this to render `<Icon size={n} />`,
+// so the looseness is benign in practice.
+// biome-ignore lint/suspicious/noExplicitAny: cross-icon-lib & cross-React-version compatibility
+export type IconComponent = any
 
 export interface SymbolEntry {
   id: string
