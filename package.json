@@ -31,8 +31,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome format --write .",
-    "prepublishOnly": "bun run build",
-    "prepare": "bun run build"
+    "prepublishOnly": "bun run build"
   },
   "keywords": ["react", "help-center", "tooltip", "documentation", "ai", "learn-mode"],
   "author": "Eric Baruch",
