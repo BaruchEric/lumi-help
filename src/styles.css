@@ -1,0 +1,362 @@
+/* lumi-help — drop-in styles for the help center.
+ * Import once at your app root:
+ *   import 'lumi-help/styles.css'
+ * Override any class at will — selectors are shallow on purpose.
+ */
+
+/* ===== Symbol tooltip ===== */
+.symbol-tip {
+  background: #2b1f14;
+  color: #faf9f6;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 240px;
+  box-shadow: 0 6px 20px rgba(45, 31, 20, 0.25);
+  z-index: 50;
+  animation: symbolTipIn 140ms ease-out;
+}
+@keyframes symbolTipIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.symbol-tip__label {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  color: #e8a87c;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+.symbol-tip__meaning {
+  color: #e8e3d8;
+}
+.symbol-tip__more {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #e8a87c;
+  text-decoration: underline;
+}
+.symbol-tip__arrow {
+  fill: #2b1f14;
+}
+@media (prefers-reduced-motion: reduce) {
+  .symbol-tip {
+    animation: none;
+  }
+}
+
+/* ===== Learn Mode ===== */
+.symbol-tip-wrap {
+  display: inline-flex;
+  position: relative;
+}
+.symbol-tip-wrap--unseen {
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(200, 117, 61, 0.45);
+  animation: symbolHalo 2.4s ease-in-out infinite;
+}
+.symbol-tip-wrap--exploring {
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(200, 117, 61, 0.2);
+}
+@keyframes symbolHalo {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px rgba(200, 117, 61, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(200, 117, 61, 0.25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .symbol-tip-wrap--unseen {
+    animation: none;
+  }
+}
+.symbol-tip-pill {
+  position: absolute;
+  bottom: -4px;
+  right: -6px;
+  background: #fff4e6;
+  color: #2b1f14;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid #e8d8c0;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+.learn-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  color: #c8753d;
+}
+.learn-mode-toggle:hover {
+  background: rgba(200, 117, 61, 0.12);
+}
+.learn-mode-toggle--on {
+  background: rgba(200, 117, 61, 0.18);
+  border-color: rgba(200, 117, 61, 0.35);
+}
+.learn-mode-banner {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  background: #fff4e6;
+  color: #2b1f14;
+  border-bottom: 1px solid #e8d8c0;
+  font-size: 13px;
+}
+.learn-mode-banner button {
+  background: transparent;
+  border: 1px solid #d4b896;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: #c8753d;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* ===== Ask Lumi ===== */
+.ask-lumi {
+  width: 100%;
+}
+.ask-lumi__form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #d4b896;
+  border-radius: 999px;
+  padding: 8px 14px;
+}
+.ask-lumi__icon {
+  color: #c8753d;
+  flex-shrink: 0;
+}
+.ask-lumi__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+}
+.ask-lumi__spin {
+  color: #c8753d;
+  animation: lumiSpin 1s linear infinite;
+}
+@keyframes lumiSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ask-lumi__error {
+  margin-top: 10px;
+  color: #b00020;
+  font-size: 12px;
+}
+.ask-lumi__answer {
+  margin-top: 12px;
+  background: #fff;
+  border: 1px solid #eee8dc;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.ask-lumi__chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.ask-lumi__chip {
+  background: #fff4e6;
+  color: #c8753d;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e8d8c0;
+  text-decoration: none;
+}
+
+/* ===== Help Page ===== */
+.help-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+}
+.help-page__hero {
+  background: linear-gradient(135deg, #faf9f6 0%, #f3e9d8 100%);
+  border: 1px solid #e8d8c0;
+  border-radius: 16px;
+  padding: 24px;
+}
+.help-page__hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  margin: 0 0 4px 0;
+  color: #2b1f14;
+}
+.help-page__subtitle {
+  margin: 0 0 14px 0;
+  color: #666;
+  font-size: 14px;
+}
+.help-page__chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.help-page__chip {
+  background: #fff4e6;
+  color: #c8753d;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e8d8c0;
+  text-decoration: none;
+}
+.help-page__filter {
+  margin-top: 10px;
+}
+.help-page__filter input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #eee8dc;
+  background: #fff;
+  font-size: 13px;
+}
+.help-section {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid #eee8dc;
+}
+.help-section h2 {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  margin: 0 0 12px 0;
+  color: #2b1f14;
+}
+.help-section__guides {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.guide-card {
+  background: #fff;
+  border: 1px solid #eee8dc;
+  border-radius: 12px;
+  padding: 14px;
+  transition: box-shadow 0.2s;
+}
+.guide-card h3 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+  color: #2b1f14;
+}
+.guide-card__summary {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+.guide-card__body {
+  padding-top: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.guide-card--flash {
+  box-shadow: 0 0 0 3px rgba(200, 117, 61, 0.45);
+}
+
+.help-section__symbols {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.symbol-row {
+  display: grid;
+  grid-template-columns: 28px minmax(120px, 180px) 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.symbol-row:hover {
+  background: #fff4e6;
+}
+.symbol-row__icon {
+  color: #c8753d;
+  display: inline-flex;
+}
+.symbol-row__label {
+  font-weight: 600;
+  color: #2b1f14;
+}
+.symbol-row__meaning {
+  color: #555;
+}
+.symbol-row__more {
+  color: #c8753d;
+  font-size: 12px;
+  text-decoration: underline;
+}
+.symbol-row--flash {
+  background: #fff4e6;
+  box-shadow: 0 0 0 3px rgba(200, 117, 61, 0.45);
+}
+
+.help-page__footer {
+  margin-top: 32px;
+  text-align: center;
+}
+.help-page__footer button {
+  background: transparent;
+  color: #c8753d;
+  border: 1px solid #d4b896;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .help-page {
+    padding: 16px 12px 100px;
+  }
+  .help-page__hero {
+    padding: 18px;
+  }
+  .symbol-row {
+    grid-template-columns: 24px 1fr;
+    row-gap: 2px;
+  }
+  .symbol-row__meaning {
+    grid-column: 2;
+  }
+}

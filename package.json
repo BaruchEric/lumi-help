@@ -1,0 +1,61 @@
+{
+  "name": "lumi-help",
+  "version": "0.0.1",
+  "description": "Embeddable in-app help center — symbol tooltips, learn mode, guides, and AI assist.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./adapters/storage": {
+      "types": "./dist/adapters/storage.d.ts",
+      "import": "./dist/adapters/storage.js"
+    },
+    "./adapters/transport": {
+      "types": "./dist/adapters/transport.d.ts",
+      "import": "./dist/adapters/transport.js"
+    }
+  },
+  "sideEffects": ["**/*.css"],
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": ["react", "help-center", "tooltip", "documentation", "ai", "learn-mode"],
+  "author": "Eric Baruch",
+  "license": "MIT",
+  "repository": "github:BaruchEric/lumi-help",
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@radix-ui/react-tooltip": "^1.1.0",
+    "react-markdown": "^9.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "@testing-library/jest-dom": "^6.4.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "happy-dom": "^15.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}
