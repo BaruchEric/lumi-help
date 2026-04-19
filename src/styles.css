@@ -1,19 +1,72 @@
 /* lumi-help — drop-in styles for the help center.
  * Import once at your app root:
  *   import 'lumi-help/styles.css'
- * Override any class at will — selectors are shallow on purpose.
+ *
+ * Theming:
+ *   All visual values are CSS custom properties. Override any of them in
+ *   your own CSS (e.g. under `.dark`, `[data-theme="night"]`, or `:root`)
+ *   to match your product. The defaults below are a warm-guidebook palette.
+ *
+ *   Full list of variables: see the `:where(:root)` block immediately below.
  */
+
+:where(:root) {
+  /* Text */
+  --lumi-ink: #2b1f14;
+  --lumi-ink-inverse: #faf9f6;
+  --lumi-meaning: #555;
+  --lumi-subtle: #666;
+
+  /* Accents */
+  --lumi-accent: #c8753d;
+  --lumi-accent-soft: #e8a87c;
+  --lumi-accent-wash: #fff4e6;
+  --lumi-accent-halo: rgba(200, 117, 61, 0.45);
+  --lumi-accent-halo-weak: rgba(200, 117, 61, 0.2);
+  --lumi-accent-halo-hover: rgba(200, 117, 61, 0.12);
+  --lumi-accent-halo-on: rgba(200, 117, 61, 0.18);
+  --lumi-accent-halo-on-border: rgba(200, 117, 61, 0.35);
+
+  /* Surfaces */
+  --lumi-surface: #fff;
+  --lumi-surface-alt: #faf9f6;
+  --lumi-surface-hero-end: #f3e9d8;
+  --lumi-tooltip-bg: #2b1f14;
+  --lumi-tooltip-fg: #faf9f6;
+  --lumi-tooltip-meaning: #e8e3d8;
+
+  /* Borders */
+  --lumi-border: #eee8dc;
+  --lumi-border-sand: #e8d8c0;
+  --lumi-border-strong: #d4b896;
+
+  /* Error */
+  --lumi-error: #b00020;
+
+  /* Radii */
+  --lumi-radius-sm: 8px;
+  --lumi-radius: 10px;
+  --lumi-radius-lg: 12px;
+  --lumi-radius-hero: 16px;
+  --lumi-radius-pill: 999px;
+
+  /* Shadows */
+  --lumi-shadow-tooltip: 0 6px 20px rgba(45, 31, 20, 0.25);
+
+  /* Fonts */
+  --lumi-font-serif: Georgia, "Times New Roman", serif;
+}
 
 /* ===== Symbol tooltip ===== */
 .symbol-tip {
-  background: #2b1f14;
-  color: #faf9f6;
+  background: var(--lumi-tooltip-bg);
+  color: var(--lumi-tooltip-fg);
   padding: 10px 14px;
-  border-radius: 12px;
+  border-radius: var(--lumi-radius-lg);
   font-size: 13px;
   line-height: 1.4;
   max-width: 240px;
-  box-shadow: 0 6px 20px rgba(45, 31, 20, 0.25);
+  box-shadow: var(--lumi-shadow-tooltip);
   z-index: 50;
   animation: symbolTipIn 140ms ease-out;
 }
@@ -28,24 +81,24 @@
   }
 }
 .symbol-tip__label {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--lumi-font-serif);
   font-size: 14px;
-  color: #e8a87c;
+  color: var(--lumi-accent-soft);
   margin-bottom: 3px;
   font-weight: 600;
 }
 .symbol-tip__meaning {
-  color: #e8e3d8;
+  color: var(--lumi-tooltip-meaning);
 }
 .symbol-tip__more {
   display: inline-block;
   margin-top: 6px;
   font-size: 12px;
-  color: #e8a87c;
+  color: var(--lumi-accent-soft);
   text-decoration: underline;
 }
 .symbol-tip__arrow {
-  fill: #2b1f14;
+  fill: var(--lumi-tooltip-bg);
 }
 @media (prefers-reduced-motion: reduce) {
   .symbol-tip {
@@ -59,21 +112,21 @@
   position: relative;
 }
 .symbol-tip-wrap--unseen {
-  border-radius: 8px;
-  box-shadow: 0 0 0 2px rgba(200, 117, 61, 0.45);
+  border-radius: var(--lumi-radius-sm);
+  box-shadow: 0 0 0 2px var(--lumi-accent-halo);
   animation: symbolHalo 2.4s ease-in-out infinite;
 }
 .symbol-tip-wrap--exploring {
-  border-radius: 8px;
-  box-shadow: 0 0 0 2px rgba(200, 117, 61, 0.2);
+  border-radius: var(--lumi-radius-sm);
+  box-shadow: 0 0 0 2px var(--lumi-accent-halo-weak);
 }
 @keyframes symbolHalo {
   0%,
   100% {
-    box-shadow: 0 0 0 2px rgba(200, 117, 61, 0.45);
+    box-shadow: 0 0 0 2px var(--lumi-accent-halo);
   }
   50% {
-    box-shadow: 0 0 0 4px rgba(200, 117, 61, 0.25);
+    box-shadow: 0 0 0 4px var(--lumi-accent-halo-weak);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -85,13 +138,13 @@
   position: absolute;
   bottom: -4px;
   right: -6px;
-  background: #fff4e6;
-  color: #2b1f14;
+  background: var(--lumi-accent-wash);
+  color: var(--lumi-ink);
   font-size: 10px;
   font-weight: 600;
   padding: 2px 6px;
-  border-radius: 999px;
-  border: 1px solid #e8d8c0;
+  border-radius: var(--lumi-radius-pill);
+  border: 1px solid var(--lumi-border-sand);
   pointer-events: none;
   transform: translateY(100%);
 }
@@ -101,18 +154,18 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 999px;
+  border-radius: var(--lumi-radius-pill);
   border: 1px solid transparent;
   background: transparent;
   cursor: pointer;
-  color: #c8753d;
+  color: var(--lumi-accent);
 }
 .learn-mode-toggle:hover {
-  background: rgba(200, 117, 61, 0.12);
+  background: var(--lumi-accent-halo-hover);
 }
 .learn-mode-toggle--on {
-  background: rgba(200, 117, 61, 0.18);
-  border-color: rgba(200, 117, 61, 0.35);
+  background: var(--lumi-accent-halo-on);
+  border-color: var(--lumi-accent-halo-on-border);
 }
 .learn-mode-banner {
   position: sticky;
@@ -123,17 +176,17 @@
   justify-content: space-between;
   gap: 12px;
   padding: 8px 14px;
-  background: #fff4e6;
-  color: #2b1f14;
-  border-bottom: 1px solid #e8d8c0;
+  background: var(--lumi-accent-wash);
+  color: var(--lumi-ink);
+  border-bottom: 1px solid var(--lumi-border-sand);
   font-size: 13px;
 }
 .learn-mode-banner button {
   background: transparent;
-  border: 1px solid #d4b896;
-  border-radius: 999px;
+  border: 1px solid var(--lumi-border-strong);
+  border-radius: var(--lumi-radius-pill);
   padding: 4px 10px;
-  color: #c8753d;
+  color: var(--lumi-accent);
   font-size: 12px;
   cursor: pointer;
 }
@@ -146,13 +199,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #fff;
-  border: 1px solid #d4b896;
-  border-radius: 999px;
+  background: var(--lumi-surface);
+  border: 1px solid var(--lumi-border-strong);
+  border-radius: var(--lumi-radius-pill);
   padding: 8px 14px;
 }
 .ask-lumi__icon {
-  color: #c8753d;
+  color: var(--lumi-accent);
   flex-shrink: 0;
 }
 .ask-lumi__input {
@@ -161,9 +214,10 @@
   outline: none;
   background: transparent;
   font-size: 14px;
+  color: var(--lumi-ink);
 }
 .ask-lumi__spin {
-  color: #c8753d;
+  color: var(--lumi-accent);
   animation: lumiSpin 1s linear infinite;
 }
 @keyframes lumiSpin {
@@ -173,17 +227,18 @@
 }
 .ask-lumi__error {
   margin-top: 10px;
-  color: #b00020;
+  color: var(--lumi-error);
   font-size: 12px;
 }
 .ask-lumi__answer {
   margin-top: 12px;
-  background: #fff;
-  border: 1px solid #eee8dc;
-  border-radius: 12px;
+  background: var(--lumi-surface);
+  border: 1px solid var(--lumi-border);
+  border-radius: var(--lumi-radius-lg);
   padding: 14px;
   font-size: 14px;
   line-height: 1.6;
+  color: var(--lumi-ink);
 }
 .ask-lumi__chips {
   display: flex;
@@ -192,12 +247,12 @@
   margin-top: 10px;
 }
 .ask-lumi__chip {
-  background: #fff4e6;
-  color: #c8753d;
+  background: var(--lumi-accent-wash);
+  color: var(--lumi-accent);
   font-size: 12px;
   padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid #e8d8c0;
+  border-radius: var(--lumi-radius-pill);
+  border: 1px solid var(--lumi-border-sand);
   text-decoration: none;
 }
 
@@ -206,22 +261,23 @@
   max-width: 880px;
   margin: 0 auto;
   padding: 24px 16px 80px;
+  color: var(--lumi-ink);
 }
 .help-page__hero {
-  background: linear-gradient(135deg, #faf9f6 0%, #f3e9d8 100%);
-  border: 1px solid #e8d8c0;
-  border-radius: 16px;
+  background: linear-gradient(135deg, var(--lumi-surface-alt) 0%, var(--lumi-surface-hero-end) 100%);
+  border: 1px solid var(--lumi-border-sand);
+  border-radius: var(--lumi-radius-hero);
   padding: 24px;
 }
 .help-page__hero h1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--lumi-font-serif);
   font-size: 28px;
   margin: 0 0 4px 0;
-  color: #2b1f14;
+  color: var(--lumi-ink);
 }
 .help-page__subtitle {
   margin: 0 0 14px 0;
-  color: #666;
+  color: var(--lumi-subtle);
   font-size: 14px;
 }
 .help-page__chips {
@@ -231,12 +287,12 @@
   margin-top: 12px;
 }
 .help-page__chip {
-  background: #fff4e6;
-  color: #c8753d;
+  background: var(--lumi-accent-wash);
+  color: var(--lumi-accent);
   font-size: 12px;
   padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid #e8d8c0;
+  border-radius: var(--lumi-radius-pill);
+  border: 1px solid var(--lumi-border-sand);
   text-decoration: none;
 }
 .help-page__filter {
@@ -245,21 +301,22 @@
 .help-page__filter input {
   width: 100%;
   padding: 8px 12px;
-  border-radius: 10px;
-  border: 1px solid #eee8dc;
-  background: #fff;
+  border-radius: var(--lumi-radius);
+  border: 1px solid var(--lumi-border);
+  background: var(--lumi-surface);
+  color: var(--lumi-ink);
   font-size: 13px;
 }
 .help-section {
   margin-top: 28px;
   padding-top: 16px;
-  border-top: 1px solid #eee8dc;
+  border-top: 1px solid var(--lumi-border);
 }
 .help-section h2 {
-  font-family: Georgia, serif;
+  font-family: var(--lumi-font-serif);
   font-size: 22px;
   margin: 0 0 12px 0;
-  color: #2b1f14;
+  color: var(--lumi-ink);
 }
 .help-section__guides {
   display: grid;
@@ -268,29 +325,30 @@
   margin-bottom: 14px;
 }
 .guide-card {
-  background: #fff;
-  border: 1px solid #eee8dc;
-  border-radius: 12px;
+  background: var(--lumi-surface);
+  border: 1px solid var(--lumi-border);
+  border-radius: var(--lumi-radius-lg);
   padding: 14px;
   transition: box-shadow 0.2s;
 }
 .guide-card h3 {
   margin: 0 0 4px 0;
   font-size: 15px;
-  color: #2b1f14;
+  color: var(--lumi-ink);
 }
 .guide-card__summary {
   margin: 0;
   font-size: 13px;
-  color: #666;
+  color: var(--lumi-subtle);
 }
 .guide-card__body {
   padding-top: 8px;
   font-size: 14px;
   line-height: 1.6;
+  color: var(--lumi-ink);
 }
 .guide-card--flash {
-  box-shadow: 0 0 0 3px rgba(200, 117, 61, 0.45);
+  box-shadow: 0 0 0 3px var(--lumi-accent-halo);
 }
 
 .help-section__symbols {
@@ -304,31 +362,31 @@
   gap: 10px;
   align-items: center;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: var(--lumi-radius);
   font-size: 14px;
 }
 .symbol-row:hover {
-  background: #fff4e6;
+  background: var(--lumi-accent-wash);
 }
 .symbol-row__icon {
-  color: #c8753d;
+  color: var(--lumi-accent);
   display: inline-flex;
 }
 .symbol-row__label {
   font-weight: 600;
-  color: #2b1f14;
+  color: var(--lumi-ink);
 }
 .symbol-row__meaning {
-  color: #555;
+  color: var(--lumi-meaning);
 }
 .symbol-row__more {
-  color: #c8753d;
+  color: var(--lumi-accent);
   font-size: 12px;
   text-decoration: underline;
 }
 .symbol-row--flash {
-  background: #fff4e6;
-  box-shadow: 0 0 0 3px rgba(200, 117, 61, 0.45);
+  background: var(--lumi-accent-wash);
+  box-shadow: 0 0 0 3px var(--lumi-accent-halo);
 }
 
 .help-page__footer {
@@ -337,9 +395,9 @@
 }
 .help-page__footer button {
   background: transparent;
-  color: #c8753d;
-  border: 1px solid #d4b896;
-  border-radius: 999px;
+  color: var(--lumi-accent);
+  border: 1px solid var(--lumi-border-strong);
+  border-radius: var(--lumi-radius-pill);
   padding: 6px 14px;
   font-size: 13px;
   cursor: pointer;

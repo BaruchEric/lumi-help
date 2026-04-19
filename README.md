@@ -69,6 +69,37 @@ export function App() {
 - **Learn Mode** highlights un-explored symbols with a halo and a label pill.
   State is stored in a pluggable adapter (localStorage by default).
 
+## Theming
+
+All visual values in `lumi-help/styles.css` are CSS custom properties with
+light-mode defaults. Override any of them in your own CSS — typically under
+a theme selector like `.dark` or `[data-theme="night"]` — to match your
+product. Example (Lumina's dark-mode overrides):
+
+```css
+.dark {
+  --lumi-ink: #f3e9d8;
+  --lumi-meaning: #c8c2b4;
+  --lumi-subtle: #a8a196;
+  --lumi-surface: #1a1a17;
+  --lumi-surface-alt: #0f0f0d;
+  --lumi-surface-hero-end: #2a2418;
+  --lumi-tooltip-bg: #f3e9d8;
+  --lumi-tooltip-fg: #1a1a17;
+  --lumi-tooltip-meaning: #2b1f14;
+  --lumi-border: #2a2418;
+  --lumi-border-sand: #3a2e22;
+  --lumi-border-strong: #4a3a2a;
+}
+```
+
+The full list lives at the top of `src/styles.css`. Grouped: text (`--lumi-ink`,
+`--lumi-meaning`, `--lumi-subtle`, `--lumi-ink-inverse`), accents
+(`--lumi-accent`, `--lumi-accent-soft`, `--lumi-accent-wash`, halo variants),
+surfaces (`--lumi-surface`, `--lumi-surface-alt`, `--lumi-surface-hero-end`,
+`--lumi-tooltip-bg`, `--lumi-tooltip-fg`, `--lumi-tooltip-meaning`), borders,
+error, radii, shadows, fonts.
+
 ## Adapters
 
 ### Storage

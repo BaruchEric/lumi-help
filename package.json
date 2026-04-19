@@ -1,6 +1,6 @@
 {
   "name": "lumi-help",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Embeddable in-app help center — symbol tooltips, learn mode, guides, and AI assist.",
   "type": "module",
   "main": "./dist/index.js",
