@@ -7,7 +7,7 @@ transport; the library handles the UI and the book-keeping.
 ## Install
 
 ```bash
-bun add lumi-help
+bun add @baruch-eric/lumi-help
 ```
 
 Peer deps: `react >= 18`, `react-dom >= 18`.
@@ -15,14 +15,14 @@ Peer deps: `react >= 18`, `react-dom >= 18`.
 ## Quickstart
 
 ```tsx
-import 'lumi-help/styles.css'
+import '@baruch-eric/lumi-help/styles.css'
 import {
   HelpPage,
   LearnModeProvider,
   RegistryProvider,
   SymbolTip,
   createRegistry,
-} from 'lumi-help'
+} from '@baruch-eric/lumi-help'
 
 const registry = createRegistry({
   symbols: [
@@ -71,7 +71,7 @@ export function App() {
 
 ## Theming
 
-All visual values in `lumi-help/styles.css` are CSS custom properties with
+All visual values in `@baruch-eric/lumi-help/styles.css` are CSS custom properties with
 light-mode defaults. Override any of them in your own CSS — typically under
 a theme selector like `.dark` or `[data-theme="night"]` — to match your
 product. Example (Lumina's dark-mode overrides):

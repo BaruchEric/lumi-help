@@ -1,5 +1,5 @@
 import { Apple, ChefHat, HeartPulse, Home, MoreHorizontal } from 'lucide-react'
-import type { SymbolEntry } from 'lumi-help'
+import type { SymbolEntry } from '@baruch-eric/lumi-help'
 
 export const NAV_SYMBOLS: SymbolEntry[] = [
   {

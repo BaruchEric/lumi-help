@@ -1,4 +1,4 @@
-import type { GuideEntry } from 'lumi-help'
+import type { GuideEntry } from '@baruch-eric/lumi-help'
 // Vite raw imports — each `.md?raw` resolves to the file's text at build time.
 // Non-Vite bundlers: import the markdown as a string via your own loader.
 import gettingStarted from './getting-started.md?raw'

@@ -1,9 +1,9 @@
 /**
- * Example: wire an AI gateway as the AskLumi transport. The lumi-help package
- * only needs `(prompt: string) => Promise<string>` — the specific provider is
- * yours to choose.
+ * Example: wire an AI gateway as the AskLumi transport. The
+ * @baruch-eric/lumi-help package only needs `(prompt: string) => Promise<string>`
+ * — the specific provider is yours to choose.
  */
-import type { AiTransport } from 'lumi-help'
+import type { AiTransport } from '@baruch-eric/lumi-help'
 
 // Stubs — replace with your own gateway client and preferences.
 declare function generateText(

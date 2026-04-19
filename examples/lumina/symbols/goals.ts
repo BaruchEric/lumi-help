@@ -1,5 +1,5 @@
 import { AlertTriangle, Check, Target, TrendingUp } from 'lucide-react'
-import type { SymbolEntry } from 'lumi-help'
+import type { SymbolEntry } from '@baruch-eric/lumi-help'
 
 export const GOALS_SYMBOLS: SymbolEntry[] = [
   {

@@ -1,6 +1,6 @@
-/* lumi-help — drop-in styles for the help center.
+/* @baruch-eric/lumi-help — drop-in styles for the help center.
  * Import once at your app root:
- *   import 'lumi-help/styles.css'
+ *   import '@baruch-eric/lumi-help/styles.css'
  *
  * Theming:
  *   All visual values are CSS custom properties. Override any of them in

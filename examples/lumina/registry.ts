@@ -1,4 +1,4 @@
-import { createRegistry } from 'lumi-help'
+import { createRegistry } from '@baruch-eric/lumi-help'
 import { GUIDE_ENTRIES } from './guides'
 import { AI_SYMBOLS } from './symbols/ai'
 import { FOOD_SYMBOLS } from './symbols/food'

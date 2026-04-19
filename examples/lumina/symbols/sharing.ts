@@ -1,5 +1,5 @@
 import { Globe, Lock, Users } from 'lucide-react'
-import type { SymbolEntry } from 'lumi-help'
+import type { SymbolEntry } from '@baruch-eric/lumi-help'
 
 export const SHARING_SYMBOLS: SymbolEntry[] = [
   {

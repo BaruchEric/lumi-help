@@ -1,5 +1,5 @@
 import { MessageSquare, Mic, Sparkles } from 'lucide-react'
-import type { SymbolEntry } from 'lumi-help'
+import type { SymbolEntry } from '@baruch-eric/lumi-help'
 
 export const AI_SYMBOLS: SymbolEntry[] = [
   {

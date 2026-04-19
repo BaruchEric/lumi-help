@@ -1,8 +1,8 @@
 # Lumina — example integration
 
 Seed content and adapters that the Lumina health-tracker app uses to wire
-`lumi-help` into its UI. Use as a reference; none of these files are part of
-the published package.
+`@baruch-eric/lumi-help` into its UI. Use as a reference; none of these files
+are part of the published package.
 
 ## What's here
 
@@ -22,12 +22,12 @@ the published package.
 ## Wiring it up in Lumina
 
 ```tsx
-import 'lumi-help/styles.css'
+import '@baruch-eric/lumi-help/styles.css'
 import {
   HelpPage,
   LearnModeProvider,
   RegistryProvider,
-} from 'lumi-help'
+} from '@baruch-eric/lumi-help'
 import { luminaRegistry, luminaSections } from './registry'
 import { firestoreHelpProgressAdapter } from './firestoreAdapter'
 import { geminiTransport } from './geminiTransport'

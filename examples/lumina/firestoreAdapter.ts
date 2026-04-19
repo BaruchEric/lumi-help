@@ -15,7 +15,7 @@ import {
   createLocalStorageAdapter,
   type HelpProgressAdapter,
   type HelpProgressDoc,
-} from 'lumi-help'
+} from '@baruch-eric/lumi-help'
 
 export const HELP_PROGRESS_COLLECTION = 'helpProgress'
 

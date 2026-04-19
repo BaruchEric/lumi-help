@@ -1,6 +1,9 @@
 {
-  "name": "lumi-help",
+  "name": "@baruch-eric/lumi-help",
   "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Embeddable in-app help center — symbol tooltips, learn mode, guides, and AI assist.",
   "type": "module",
   "main": "./dist/index.js",

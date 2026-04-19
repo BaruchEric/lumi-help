@@ -1,5 +1,5 @@
 import { BookOpen, FileText } from 'lucide-react'
-import type { SymbolEntry } from 'lumi-help'
+import type { SymbolEntry } from '@baruch-eric/lumi-help'
 
 export const RECIPES_SYMBOLS: SymbolEntry[] = [
   {

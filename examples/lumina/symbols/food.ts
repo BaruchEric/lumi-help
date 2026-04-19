@@ -1,5 +1,5 @@
 import { Drumstick, Droplet, Flame, Wheat } from 'lucide-react'
-import type { SymbolEntry } from 'lumi-help'
+import type { SymbolEntry } from '@baruch-eric/lumi-help'
 
 export const FOOD_SYMBOLS: SymbolEntry[] = [
   {
