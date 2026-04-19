@@ -36,7 +36,10 @@
   "keywords": ["react", "help-center", "tooltip", "documentation", "ai", "learn-mode"],
   "author": "Eric Baruch",
   "license": "MIT",
-  "repository": "github:BaruchEric/lumi-help",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaruchEric/lumi-help.git"
+  },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
