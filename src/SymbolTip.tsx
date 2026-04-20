@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react'
 import { useLearnMode } from './LearnMode'
+import { type BuildHelpHref, defaultBuildHref } from './href'
 import { useRegistry } from './registry'
 import { useTouchHold } from './useTouchHold'
 
@@ -19,11 +20,8 @@ interface Props {
   side?: Side
   /** Override the default learn-more href builder. Receives the guide id or,
    *  when no guide is linked, the symbol id prefixed with `symbol=`. */
-  buildHref?: (target: { kind: 'guide' | 'symbol'; id: string }) => string
+  buildHref?: BuildHelpHref
 }
-
-const defaultBuildHref = (t: { kind: 'guide' | 'symbol'; id: string }) =>
-  t.kind === 'guide' ? `#guide=${t.id}` : `#symbol=${t.id}`
 
 export function SymbolTip({ id, children, side = 'top', buildHref }: Props) {
   if (!id) return <>{children}</>
@@ -43,7 +41,7 @@ function SymbolTipInner({
   id: string
   children: ReactNode
   side?: Side
-  buildHref?: Props['buildHref']
+  buildHref?: BuildHelpHref
 }) {
   const registry = useRegistry()
   const entry = registry.getSymbol(id)
@@ -58,13 +56,10 @@ function SymbolTipInner({
 
   if (!entry) return <>{children}</>
 
-  const wrapClasses = [
-    'symbol-tip-wrap',
-    learn.enabled && state === 'unseen' ? 'symbol-tip-wrap--unseen' : '',
-    learn.enabled && state === 'exploring' ? 'symbol-tip-wrap--exploring' : '',
-  ]
-    .filter(Boolean)
-    .join(' ')
+  const wrapClasses =
+    learn.enabled && (state === 'unseen' || state === 'exploring')
+      ? `symbol-tip-wrap symbol-tip-wrap--${state}`
+      : 'symbol-tip-wrap'
 
   const triggerChildren = isValidElement(children) ? (
     cloneElement(children as ReactElement<Record<string, unknown>>, {
@@ -77,9 +72,10 @@ function SymbolTipInner({
     </span>
   )
 
+  const hrefFor = buildHref ?? defaultBuildHref
   const href = entry.learnMoreGuideId
-    ? (buildHref ?? defaultBuildHref)({ kind: 'guide', id: entry.learnMoreGuideId })
-    : (buildHref ?? defaultBuildHref)({ kind: 'symbol', id: entry.id })
+    ? hrefFor({ kind: 'guide', id: entry.learnMoreGuideId })
+    : hrefFor({ kind: 'symbol', id: entry.id })
 
   const ariaLabel = entry.meaning ? `${entry.label}: ${entry.meaning}` : entry.label
 

@@ -1,5 +1,6 @@
 import { type FormEvent, useState } from 'react'
 import { type AiTransport, noopTransport } from './adapters/transport'
+import { type BuildHelpHref, defaultBuildHref } from './href'
 import { type AskLumiOptions, type LumiParsed, askLumi } from './lumiPrompt'
 import { useRegistry } from './registry'
 
@@ -8,11 +9,8 @@ export interface AskLumiProps {
   options?: AskLumiOptions
   placeholder?: string
   /** Override the default chip href builder. */
-  buildHref?: (target: { kind: 'symbol' | 'guide'; id: string }) => string
+  buildHref?: BuildHelpHref
 }
-
-const defaultBuildHref = (t: { kind: 'symbol' | 'guide'; id: string }) =>
-  t.kind === 'guide' ? `#guide=${t.id}` : `#symbol=${t.id}`
 
 export function AskLumi({
   transport = noopTransport,

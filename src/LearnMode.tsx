@@ -63,7 +63,7 @@ export function LearnModeProvider({
     () => ({
       enabled,
       toggle: () => setLearnMode(!enabled),
-      getState: enabled ? (id) => computeState(symbolHistory[id]) : () => 'mastered',
+      getState: (id) => (enabled ? computeState(symbolHistory[id]) : 'mastered'),
       track: trackInteraction,
       reset: resetLearning,
     }),

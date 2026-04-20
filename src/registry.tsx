@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, useContext, useMemo } from 'react'
+import { type ReactNode, createContext, useContext } from 'react'
 import type { GuideEntry, SymbolEntry } from './types'
 
 export interface Registry {
@@ -53,8 +53,7 @@ export function RegistryProvider({
   registry: Registry
   children: ReactNode
 }) {
-  const value = useMemo(() => registry, [registry])
-  return <RegistryContext.Provider value={value}>{children}</RegistryContext.Provider>
+  return <RegistryContext.Provider value={registry}>{children}</RegistryContext.Provider>
 }
 
 export function useRegistry(): Registry {
