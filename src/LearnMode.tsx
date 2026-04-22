@@ -1,6 +1,6 @@
 import * as Tooltip from '@radix-ui/react-tooltip'
-import { type ReactNode, createContext, useContext, useEffect, useMemo } from 'react'
-import { type HelpProgressAdapter, createLocalStorageAdapter } from './adapters/storage'
+import { createContext, type ReactNode, useContext, useEffect, useMemo } from 'react'
+import { createLocalStorageAdapter, type HelpProgressAdapter } from './adapters/storage'
 import { computeState } from './helpProgress'
 import type { SymbolProgressState } from './types'
 import { useHelpProgress } from './useHelpProgress'
@@ -124,13 +124,7 @@ export function LearnModeToggle() {
 
 const DEFAULT_BANNER = 'Learn Mode on — hover or tap highlighted symbols to learn more.'
 
-function LearnModeBanner({
-  text,
-  onDismiss,
-}: {
-  text?: string
-  onDismiss: () => void
-}) {
+function LearnModeBanner({ text, onDismiss }: { text?: string; onDismiss: () => void }) {
   return (
     <output className="learn-mode-banner" aria-live="polite">
       <span>{text ?? DEFAULT_BANNER}</span>

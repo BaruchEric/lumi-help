@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { LearnModeProvider, LearnModeToggle, useLearnMode } from '../LearnMode'
 import { memoryAdapter } from '../adapters/storage'
+import { LearnModeProvider, LearnModeToggle, useLearnMode } from '../LearnMode'
 
 function Probe() {
   const { enabled } = useLearnMode()

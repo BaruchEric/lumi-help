@@ -264,7 +264,11 @@
   color: var(--lumi-ink);
 }
 .help-page__hero {
-  background: linear-gradient(135deg, var(--lumi-surface-alt) 0%, var(--lumi-surface-hero-end) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--lumi-surface-alt) 0%,
+    var(--lumi-surface-hero-end) 100%
+  );
   border: 1px solid var(--lumi-border-sand);
   border-radius: var(--lumi-radius-hero);
   padding: 24px;

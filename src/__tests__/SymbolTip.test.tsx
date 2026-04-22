@@ -2,8 +2,8 @@ import * as Tooltip from '@radix-ui/react-tooltip'
 import { render, screen } from '@testing-library/react'
 import type { ReactNode } from 'react'
 import { describe, expect, it } from 'vitest'
+import { createRegistry, RegistryProvider } from '../registry'
 import { SymbolTip } from '../SymbolTip'
-import { RegistryProvider, createRegistry } from '../registry'
 
 const registry = createRegistry({
   symbols: [
